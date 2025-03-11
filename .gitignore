@@ -1,0 +1,9 @@
+debug-*.Dockerfile
+.idea/
+dockerfiles/
+__pycache__
+.coverage
+coverage.xml
+.vscode/
+htmlcov/
+tmp/

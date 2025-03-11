@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "configMigration": true,
+  "packageRules": [
+    {
+      "groupName": "ruff",
+      "matchDepNames": [
+        "ruff"
+      ],
+      "automerge": true
+    }
+  ],
+  "platformAutomerge": true
+}
