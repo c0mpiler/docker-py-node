@@ -1,24 +1,40 @@
-# 🐳 Python with Node.js
+# 🐳 Python with Node.js Docker Images
 
-[![Pulls](https://img.shields.io/docker/pulls/c0mpiler/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/c0mpiler/python-nodejs/)
-[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/c0mpiler/docker-py-node/build.yaml?style=flat-square)](https://github.com/c0mpiler/docker-py-node/actions)
+[![Docker Hub Pulls](https://img.shields.io/docker/pulls/c0mpiler/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/c0mpiler/python-nodejs/)
+[![CI/CD Status](https://img.shields.io/github/actions/workflow/status/c0mpiler/docker-py-node/build.yaml?style=flat-square&label=CI%2FCD)](https://github.com/c0mpiler/docker-py-node/actions)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
-Last updated by bot: 2025-03-11
+Production-ready Docker images featuring Python and Node.js in various combinations. Perfect for projects requiring both ecosystems.
 
-The `latest` tag is currently:
+Last updated: 2025-03-11
 
-- Node.js: 22.x
-- npm: 10.x
-- yarn: stable
-- Python: latest
-- pip: latest
-- pipenv: latest
-- poetry: latest
-- uv: latest
+## Features
 
-## 🏷 Tags
+- **Multiple version combinations**: All supported Python and Node.js versions
+- **Multiple distributions**: Debian Bookworm (default), Bullseye, Slim, and Alpine
+- **Multi-architecture support**: linux/amd64 and linux/arm64 (except Alpine: amd64 only)
+- **Thoroughly tested**: Each image undergoes comprehensive testing
+- **Regularly updated**: Automatic updates via GitHub Actions
+- **User-friendly**: Default non-root user (`c0mpiler`) preconfigured
 
-To use a specific combination of Python and Node.js see the following table of available image tags.
+## Latest Image Details
+
+The `latest` tag currently includes:
+
+| Component | Version |
+|-----------|---------|
+| Python    | latest  |
+| Node.js   | 22.x    |
+| npm       | 10.x    |
+| yarn      | stable  |
+| pip       | latest  |
+| pipenv    | latest  |
+| poetry    | latest  |
+| uv        | latest  |
+
+## Available Tags
+
+Select the specific combination of Python and Node.js versions that suits your needs:
 
 <!-- TAGS_START -->
 
@@ -107,11 +123,9 @@ Tag | Python version | Node.js version | Distro
 
 <!-- TAGS_END -->
 
-These tags are kept updated automatically when new minor or patch version are released. The python script in [`src/docker_python_nodejs`](./src/docker_python_nodejs/) handling this is run twice a day on [GitHub actions](https://github.com/c0mpiler/docker-py-node/actions).
+These tags are automatically updated when new minor or patch versions are released. The update process runs twice daily via [GitHub Actions](https://github.com/c0mpiler/docker-py-node/actions).
 
-Image tags are built for linux/amd64 and linux/arm64 platforms, except for alpine which is only linux/amd64.
-
-## Supported versions
+## Supported Version Lifecycles
 
 <!-- SUPPORTED_VERSIONS_START -->
 
@@ -132,55 +146,68 @@ v18 | 2022-04-19 | 2025-04-30
 
 <!-- SUPPORTED_VERSIONS_END -->
 
-Versions are kept up to date using official sources. For Python we scrape the _Supported Versions_ table at [devguide.python.org/versions](https://devguide.python.org/versions/#supported-versions) and for Node.js we fetch the release schedule JSON from [github.com/nodejs/Release](https://github.com/nodejs/Release/blob/main/schedule.json).
+Version information is updated automatically from official sources:
+- Python: [devguide.python.org/versions](https://devguide.python.org/versions/#supported-versions)
+- Node.js: [github.com/nodejs/Release](https://github.com/nodejs/Release/blob/main/schedule.json)
 
-## Typical tasks
+## Usage
+
+### Basic Usage
 
 ```bash
 # Pull from Docker Hub
 docker pull c0mpiler/python-nodejs:latest
+
+# Run interactive shell
+docker run -it c0mpiler/python-nodejs bash
+
 # Build from GitHub
 docker build -t c0mpiler/python-nodejs github.com/c0mpiler/docker-py-node
-# Run image
-docker run -it c0mpiler/python-nodejs bash
 ```
 
-### Use as base image
+### Using as a Base Image
 
-```Dockerfile
-FROM c0mpiler/python-nodejs:latest
+```dockerfile
+FROM c0mpiler/python-nodejs:python3.12-nodejs22
 
-USER pn
-WORKDIR /home/pn/app
+# Use the pre-configured non-root user
+USER c0mpiler
+WORKDIR /home/c0mpiler/app
+
+# Add your application code
+COPY --chown=c0mpiler:c0mpiler . .
+
+# Install dependencies
+RUN pip install -r requirements.txt && \
+    npm install
+
+# Run your application
+CMD ["python", "app.py"]
 ```
 
-All images have a default user `pn` with uid 1000 and gid 1000.
+All images include a non-root user `c0mpiler` with uid 1000 and gid 1000, suitable for most development and production environments.
 
-## Development
+## For Maintainers
 
-This repository contains tools to generate and maintain Docker images with various combinations of Python and Node.js versions:
+This repository contains tools for generating and maintaining the Docker images:
 
 ```bash
-# Install dependencies
+# Install project dependencies
 pip install -e .
 
-# List available commands
-dpn --help
+# View available commands
+ninja --help
 
-# Generate a Dockerfile
-dpn generate-dockerfile --python-version 3.12 --nodejs-version 18 --distro bookworm
+# Generate a specific Dockerfile
+ninja generate-dockerfile --python-version 3.12 --nodejs-version 18 --distro bookworm
 
 # Update version information
-dpn update-versions
+ninja update-versions
 
-# Show supported versions
-dpn show-versions
+# Display currently supported versions
+ninja show-versions
 ```
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Disclaimer
-
-> This is experimental and might break from time to time. Use at your own risk!
