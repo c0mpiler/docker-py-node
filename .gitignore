@@ -7,3 +7,7 @@ coverage.xml
 .vscode/
 htmlcov/
 tmp/
+
+
+apikeys.json
+DockerHub-Repo-overview.md
