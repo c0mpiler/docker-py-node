@@ -24,7 +24,7 @@ RUN tar -xf "node-v{{ nodejs_canonical }}-linux-x64-musl.tar.xz"
 FROM python:{{ python_image }}
 LABEL org.opencontainers.image.authors="c0mpiler <c0mpiler@ins8s.dev>"
 
-RUN addgroup -g 1000 pn && adduser -u 1000 -G pn -s /bin/sh -D pn
+RUN addgroup -g 1000 c0mpiler && adduser -u 1000 -G c0mpiler -s /bin/sh -D c0mpiler
 RUN apk add libstdc++
 COPY --from=builder /node-v{{ nodejs_canonical }}-linux-x64-musl /usr/local
 RUN corepack enable yarn

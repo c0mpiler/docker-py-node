@@ -1,7 +1,7 @@
 FROM python:bookworm
 LABEL org.opencontainers.image.authors="c0mpiler <c0mpiler@ins8s.dev>"
 
-RUN groupadd --gid 1000 pn && useradd --uid 1000 --gid pn --shell /bin/bash --create-home pn
+RUN groupadd --gid 1000 c0mpiler && useradd --uid 1000 --gid c0mpiler --shell /bin/bash --create-home c0mpiler
 ENV POETRY_HOME=/usr/local
 
 # Install nodejs and yarn
