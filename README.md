@@ -1,14 +1,14 @@
 # 🐳 Python with Node.js Docker Images
 
 [![Docker Hub](https://img.shields.io/docker/pulls/c0mpiler/python-nodejs.svg?cache=none&style=flat-square&logo=docker&label=Docker%20Hub)](https://hub.docker.com/r/c0mpiler/python-nodejs/)
-[![GitHub Container Registry](https://img.shields.io/badge/GHCR-image-2088FF?style=flat-square&logo=github)](https://github.com/c0mpiler/python-nodejs/pkgs/container/python-nodejs)
+[![GitHub Container Registry](https://img.shields.io/badge/GHCR-image-2088FF?style=flat-square&logo=github)](https://github.com/c0mpiler/docker-py-node/pkgs/container/python-nodejs)
 [![Docker Repository on Quay](https://quay.io/repository/c0mpiler/python-nodejs/status "Docker Repository on Quay")](https://quay.io/repository/c0mpiler/python-nodejs)
 [![CI/CD Status](https://img.shields.io/github/actions/workflow/status/c0mpiler/docker-py-node/build.yaml?style=flat-square&label=CI%2FCD)](https://github.com/c0mpiler/docker-py-node/actions)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 Production-ready Docker images featuring Python and Node.js in various combinations. Perfect for projects requiring both ecosystems.
 
-Available on [Docker Hub](https://hub.docker.com/r/c0mpiler/python-nodejs/), [GitHub Container Registry](https://github.com/c0mpiler/python-nodejs/pkgs/container/python-nodejs), and [Quay.io](https://quay.io/repository/c0mpiler/python-nodejs).
+Available on [Docker Hub](https://hub.docker.com/r/c0mpiler/python-nodejs/), [GitHub Container Registry](https://github.com/c0mpiler/docker-py-node/pkgs/container/python-nodejs), and [Quay.io](https://quay.io/repository/c0mpiler/python-nodejs).
 
 Last updated: 2025-03-11
 
