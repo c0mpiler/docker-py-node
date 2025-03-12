@@ -2,11 +2,13 @@
 
 [![Docker Hub](https://img.shields.io/docker/pulls/c0mpiler/python-nodejs.svg?cache=none&style=flat-square&logo=docker&label=Docker%20Hub)](https://hub.docker.com/r/c0mpiler/python-nodejs/)
 [![GitHub Container Registry](https://img.shields.io/badge/GHCR-image-2088FF?style=flat-square&logo=github)](https://github.com/c0mpiler/python-nodejs/pkgs/container/python-nodejs)
-[![Quay](https://quay.io/repository/c0mpiler/python-nodejs/status "Docker Repository on Quay")](https://quay.io/repository/c0mpiler/python-nodejs)
+[![Docker Repository on Quay](https://quay.io/repository/c0mpiler/python-nodejs/status "Docker Repository on Quay")](https://quay.io/repository/c0mpiler/python-nodejs)
 [![CI/CD Status](https://img.shields.io/github/actions/workflow/status/c0mpiler/docker-py-node/build.yaml?style=flat-square&label=CI%2FCD)](https://github.com/c0mpiler/docker-py-node/actions)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 Production-ready Docker images featuring Python and Node.js in various combinations. Perfect for projects requiring both ecosystems.
+
+Available on [Docker Hub](https://hub.docker.com/r/c0mpiler/python-nodejs/), [GitHub Container Registry](https://github.com/c0mpiler/python-nodejs/pkgs/container/python-nodejs), and [Quay.io](https://quay.io/repository/c0mpiler/python-nodejs).
 
 Last updated: 2025-03-11
 
@@ -177,7 +179,14 @@ docker build -t c0mpiler/python-nodejs github.com/c0mpiler/docker-py-node
 ### Using as a Base Image
 
 ```dockerfile
+# Using Docker Hub
 FROM c0mpiler/python-nodejs:python3.12-nodejs22
+
+# OR using GitHub Container Registry
+# FROM ghcr.io/c0mpiler/python-nodejs:python3.12-nodejs22
+
+# OR using Quay.io
+# FROM quay.io/c0mpiler/python-nodejs:python3.12-nodejs22
 
 # Use the pre-configured non-root user
 USER c0mpiler
@@ -195,6 +204,18 @@ CMD ["python", "app.py"]
 ```
 
 All images include a non-root user `c0mpiler` with uid 1000 and gid 1000, suitable for most development and production environments.
+
+## Container Registry Options
+
+These images are available on multiple registries to ensure high availability and flexibility:
+
+| Registry | URL | Pull Command Example |
+|----------|-----|----------------------|
+| Docker Hub | [c0mpiler/python-nodejs](https://hub.docker.com/r/c0mpiler/python-nodejs/) | `docker pull c0mpiler/python-nodejs:latest` |
+| GitHub Container Registry | [ghcr.io/c0mpiler/python-nodejs](https://github.com/c0mpiler/python-nodejs/pkgs/container/python-nodejs) | `docker pull ghcr.io/c0mpiler/python-nodejs:latest` |
+| Quay.io | [quay.io/c0mpiler/python-nodejs](https://quay.io/repository/c0mpiler/python-nodejs) | `docker pull quay.io/c0mpiler/python-nodejs:latest` |
+
+All registries are automatically updated with each release. You can use the registry that best fits your infrastructure or requirements.
 
 ## For Maintainers
 
