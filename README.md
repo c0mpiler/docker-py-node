@@ -1,6 +1,6 @@
 # 🐳 Python with Node.js Docker Images
 
-[![Docker Hub Pulls](https://img.shields.io/docker/pulls/c0mpiler/python-nodejs.svg?style=flat-square)](https://hub.docker.com/r/c0mpiler/python-nodejs/)
+[![Docker Hub Pulls](https://img.shields.io/docker/pulls/c0mpiler/python-nodejs.svg?cache=none&style=flat-square)](https://hub.docker.com/r/c0mpiler/python-nodejs/)
 [![CI/CD Status](https://img.shields.io/github/actions/workflow/status/c0mpiler/docker-py-node/build.yaml?style=flat-square&label=CI%2FCD)](https://github.com/c0mpiler/docker-py-node/actions)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
