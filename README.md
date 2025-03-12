@@ -1,6 +1,8 @@
 # 🐳 Python with Node.js Docker Images
 
-[![Docker Hub Pulls](https://img.shields.io/docker/pulls/c0mpiler/python-nodejs.svg?cache=none&style=flat-square)](https://hub.docker.com/r/c0mpiler/python-nodejs/)
+[![Docker Hub](https://img.shields.io/docker/pulls/c0mpiler/python-nodejs.svg?cache=none&style=flat-square&logo=docker&label=Docker%20Hub)](https://hub.docker.com/r/c0mpiler/python-nodejs/)
+[![GitHub Container Registry](https://img.shields.io/badge/GHCR-image-2088FF?style=flat-square&logo=github)](https://github.com/c0mpiler/python-nodejs/pkgs/container/python-nodejs)
+[![Quay](https://quay.io/repository/c0mpiler/python-nodejs/status "Docker Repository on Quay")](https://quay.io/repository/c0mpiler/python-nodejs)
 [![CI/CD Status](https://img.shields.io/github/actions/workflow/status/c0mpiler/docker-py-node/build.yaml?style=flat-square&label=CI%2FCD)](https://github.com/c0mpiler/docker-py-node/actions)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
@@ -12,6 +14,7 @@ Last updated: 2025-03-11
 
 - **Multiple version combinations**: All supported Python and Node.js versions
 - **Multiple distributions**: Debian Bookworm (default), Bullseye, Slim, and Alpine
+- **Multi-registry availability**: Available on Docker Hub, GitHub Container Registry, and Quay.io
 - **Multi-architecture support**: linux/amd64 and linux/arm64 (except Alpine: amd64 only)
 - **Thoroughly tested**: Each image undergoes comprehensive testing
 - **Regularly updated**: Automatic updates via GitHub Actions
@@ -157,6 +160,12 @@ Version information is updated automatically from official sources:
 ```bash
 # Pull from Docker Hub
 docker pull c0mpiler/python-nodejs:latest
+
+# Pull from GitHub Container Registry
+docker pull ghcr.io/c0mpiler/python-nodejs:latest
+
+# Pull from Quay.io
+docker pull quay.io/c0mpiler/python-nodejs:latest
 
 # Run interactive shell
 docker run -it c0mpiler/python-nodejs bash
