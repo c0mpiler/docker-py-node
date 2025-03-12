@@ -2,9 +2,9 @@ name: Deploy
 
 on:
   push:
-    branches: [main, dev]
+    branches: [main]
   schedule:
-    - cron: "0 00,12 * * *" # Twice a day
+    - cron: "0 00,12 * * *"  # Twice a day
 
 jobs:
   generate-matrix:
@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
-      - uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@v4
         with:
           enable-cache: true
       - name: Generate build matrix
@@ -35,7 +35,7 @@ jobs:
       matrix: ${{ fromJSON(needs.generate-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@v4
         with:
           enable-cache: true
       - name: Generate Dockerfile from config
@@ -66,7 +66,7 @@ jobs:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_TOKEN }}
 
-      - name: Build image for testing
+      - name: Build image
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -78,7 +78,7 @@ jobs:
         run: |
           docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version && uv --version"
 
-      - name: Push images to all registries
+      - name: Push image
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -96,7 +96,7 @@ jobs:
     needs: [deploy]
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@v4
         with:
           enable-cache: true
       - name: Update versions.json and README.md, then commit and push changes (if any)
