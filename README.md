@@ -161,16 +161,16 @@ Version information is updated automatically from official sources:
 
 ```bash
 # Pull from Docker Hub
-docker pull c0mpiler/python-nodejs:latest
+docker pull c0mpiler/python-nodejs:python3.9-nodejs22
 
 # Pull from GitHub Container Registry
-docker pull ghcr.io/c0mpiler/python-nodejs:latest
+docker pull ghcr.io/c0mpiler/python-nodejs:python3.9-nodejs22
 
 # Pull from Quay.io
-docker pull quay.io/c0mpiler/python-nodejs:latest
+docker pull quay.io/c0mpiler/python-nodejs:python3.9-nodejs22
 
 # Run interactive shell
-docker run -it c0mpiler/python-nodejs bash
+docker run -it c0mpiler/python-nodejs:python3.9-nodejs22 bash
 
 # Build from GitHub
 docker build -t c0mpiler/python-nodejs github.com/c0mpiler/docker-py-node
