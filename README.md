@@ -45,10 +45,10 @@ Select the specific combination of Python and Node.js versions that suits your n
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.13-nodejs24` | 3.13.3 | 24.0.0 | bookworm
-`python3.13-nodejs24-bullseye` | 3.13.3 | 24.0.0 | bullseye
-`python3.13-nodejs24-slim` | 3.13.3 | 24.0.0 | slim
-`python3.13-nodejs24-alpine` | 3.13.3 | 24.0.0 | alpine
+`python3.13-nodejs24` | 3.13.3 | 24.0.1 | bookworm
+`python3.13-nodejs24-bullseye` | 3.13.3 | 24.0.1 | bullseye
+`python3.13-nodejs24-slim` | 3.13.3 | 24.0.1 | slim
+`python3.13-nodejs24-alpine` | 3.13.3 | 24.0.1 | alpine
 `python3.13-nodejs23` | 3.13.3 | 23.11.0 | bookworm
 `python3.13-nodejs23-bullseye` | 3.13.3 | 23.11.0 | bullseye
 `python3.13-nodejs23-slim` | 3.13.3 | 23.11.0 | slim
@@ -61,10 +61,10 @@ Tag | Python version | Node.js version | Distro
 `python3.13-nodejs20-bullseye` | 3.13.3 | 20.19.1 | bullseye
 `python3.13-nodejs20-slim` | 3.13.3 | 20.19.1 | slim
 `python3.13-nodejs20-alpine` | 3.13.3 | 20.19.1 | alpine
-`python3.12-nodejs24` | 3.12.10 | 24.0.0 | bookworm
-`python3.12-nodejs24-bullseye` | 3.12.10 | 24.0.0 | bullseye
-`python3.12-nodejs24-slim` | 3.12.10 | 24.0.0 | slim
-`python3.12-nodejs24-alpine` | 3.12.10 | 24.0.0 | alpine
+`python3.12-nodejs24` | 3.12.10 | 24.0.1 | bookworm
+`python3.12-nodejs24-bullseye` | 3.12.10 | 24.0.1 | bullseye
+`python3.12-nodejs24-slim` | 3.12.10 | 24.0.1 | slim
+`python3.12-nodejs24-alpine` | 3.12.10 | 24.0.1 | alpine
 `python3.12-nodejs23` | 3.12.10 | 23.11.0 | bookworm
 `python3.12-nodejs23-bullseye` | 3.12.10 | 23.11.0 | bullseye
 `python3.12-nodejs23-slim` | 3.12.10 | 23.11.0 | slim
@@ -77,10 +77,10 @@ Tag | Python version | Node.js version | Distro
 `python3.12-nodejs20-bullseye` | 3.12.10 | 20.19.1 | bullseye
 `python3.12-nodejs20-slim` | 3.12.10 | 20.19.1 | slim
 `python3.12-nodejs20-alpine` | 3.12.10 | 20.19.1 | alpine
-`python3.11-nodejs24` | 3.11.12 | 24.0.0 | bookworm
-`python3.11-nodejs24-bullseye` | 3.11.12 | 24.0.0 | bullseye
-`python3.11-nodejs24-slim` | 3.11.12 | 24.0.0 | slim
-`python3.11-nodejs24-alpine` | 3.11.12 | 24.0.0 | alpine
+`python3.11-nodejs24` | 3.11.12 | 24.0.1 | bookworm
+`python3.11-nodejs24-bullseye` | 3.11.12 | 24.0.1 | bullseye
+`python3.11-nodejs24-slim` | 3.11.12 | 24.0.1 | slim
+`python3.11-nodejs24-alpine` | 3.11.12 | 24.0.1 | alpine
 `python3.11-nodejs23` | 3.11.12 | 23.11.0 | bookworm
 `python3.11-nodejs23-bullseye` | 3.11.12 | 23.11.0 | bullseye
 `python3.11-nodejs23-slim` | 3.11.12 | 23.11.0 | slim
@@ -93,10 +93,10 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs20-bullseye` | 3.11.12 | 20.19.1 | bullseye
 `python3.11-nodejs20-slim` | 3.11.12 | 20.19.1 | slim
 `python3.11-nodejs20-alpine` | 3.11.12 | 20.19.1 | alpine
-`python3.10-nodejs24` | 3.10.17 | 24.0.0 | bookworm
-`python3.10-nodejs24-bullseye` | 3.10.17 | 24.0.0 | bullseye
-`python3.10-nodejs24-slim` | 3.10.17 | 24.0.0 | slim
-`python3.10-nodejs24-alpine` | 3.10.17 | 24.0.0 | alpine
+`python3.10-nodejs24` | 3.10.17 | 24.0.1 | bookworm
+`python3.10-nodejs24-bullseye` | 3.10.17 | 24.0.1 | bullseye
+`python3.10-nodejs24-slim` | 3.10.17 | 24.0.1 | slim
+`python3.10-nodejs24-alpine` | 3.10.17 | 24.0.1 | alpine
 `python3.10-nodejs23` | 3.10.17 | 23.11.0 | bookworm
 `python3.10-nodejs23-bullseye` | 3.10.17 | 23.11.0 | bullseye
 `python3.10-nodejs23-slim` | 3.10.17 | 23.11.0 | slim
@@ -109,10 +109,10 @@ Tag | Python version | Node.js version | Distro
 `python3.10-nodejs20-bullseye` | 3.10.17 | 20.19.1 | bullseye
 `python3.10-nodejs20-slim` | 3.10.17 | 20.19.1 | slim
 `python3.10-nodejs20-alpine` | 3.10.17 | 20.19.1 | alpine
-`python3.9-nodejs24` | 3.9.22 | 24.0.0 | bookworm
-`python3.9-nodejs24-bullseye` | 3.9.22 | 24.0.0 | bullseye
-`python3.9-nodejs24-slim` | 3.9.22 | 24.0.0 | slim
-`python3.9-nodejs24-alpine` | 3.9.22 | 24.0.0 | alpine
+`python3.9-nodejs24` | 3.9.22 | 24.0.1 | bookworm
+`python3.9-nodejs24-bullseye` | 3.9.22 | 24.0.1 | bullseye
+`python3.9-nodejs24-slim` | 3.9.22 | 24.0.1 | slim
+`python3.9-nodejs24-alpine` | 3.9.22 | 24.0.1 | alpine
 `python3.9-nodejs23` | 3.9.22 | 23.11.0 | bookworm
 `python3.9-nodejs23-bullseye` | 3.9.22 | 23.11.0 | bullseye
 `python3.9-nodejs23-slim` | 3.9.22 | 23.11.0 | slim
