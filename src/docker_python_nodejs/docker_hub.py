@@ -1,6 +1,6 @@
 from typing import TypedDict
 
-import requests
+from .http import get_session
 
 
 class DockerImageDict(TypedDict):
@@ -45,7 +45,8 @@ class DockerTagResponse(TypedDict):
 
 def fetch_tags(package: str, page: int = 1) -> list[DockerTagDict]:
     """Fetch available docker tags."""
-    result = requests.get(
+    session = get_session()
+    result = session.get(
         f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
         params={"page": page, "page_size": 100},
         timeout=10.0,

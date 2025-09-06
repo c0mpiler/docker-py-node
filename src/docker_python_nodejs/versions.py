@@ -5,13 +5,13 @@ import logging
 import re
 from dataclasses import dataclass
 
-import requests
 from bs4 import BeautifulSoup
 from semver.version import Version
 
 from docker_python_nodejs.readme import format_supported_versions
 
 from .docker_hub import DockerImageDict, DockerTagDict, fetch_tags
+from .http import get_session
 from .nodejs_versions import (
     fetch_node_releases,
     fetch_node_unofficial_releases,
@@ -109,7 +109,8 @@ def scrape_supported_python_versions() -> list[SupportedVersion]:
     versions = []
     version_table_row_selector = "#supported-versions tbody tr"
 
-    res = requests.get("https://devguide.python.org/versions/", timeout=10.0)
+    session = get_session()
+    res = session.get("https://devguide.python.org/versions/", timeout=10.0)
     res.raise_for_status()
 
     soup = BeautifulSoup(res.text, "html.parser")
