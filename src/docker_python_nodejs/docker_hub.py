@@ -43,15 +43,36 @@ class DockerTagResponse(TypedDict):
     results: list[DockerTagDict]
 
 
-def fetch_tags(package: str, page: int = 1) -> list[DockerTagDict]:
-    """Fetch available docker tags."""
-    result = requests.get(
-        f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
-        params={"page": page, "page_size": 100},
-        timeout=10.0,
-    )
-    result.raise_for_status()
-    data: DockerTagResponse = result.json()
-    if not data["next"]:
-        return data["results"]
-    return data["results"] + fetch_tags(package, page=page + 1)
+def fetch_tags(package: str, page: int = 1, max_retries: int = 3) -> list[DockerTagDict]:
+    """Fetch available docker tags.
+
+    Iterates over paginated responses from the Docker Hub API collecting all
+    tags. If a request fails it is retried ``max_retries`` times before raising
+    a ``RuntimeError`` with context information.
+    """
+
+    tags: list[DockerTagDict] = []
+    next_page: str | None = "start"
+
+    while next_page:
+        for attempt in range(1, max_retries + 1):
+            try:
+                result = requests.get(
+                    f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
+                    params={"page": page, "page_size": 100},
+                    timeout=10.0,
+                )
+                result.raise_for_status()
+            except requests.RequestException as exc:  # pragma: no cover - exercised via tests
+                if attempt == max_retries:
+                    raise RuntimeError(
+                        f"Failed to fetch tags for {package} after {max_retries} attempts (page {page})"
+                    ) from exc
+            else:
+                data: DockerTagResponse = result.json()
+                tags.extend(data["results"])
+                next_page = data["next"]
+                page += 1
+                break
+
+    return tags

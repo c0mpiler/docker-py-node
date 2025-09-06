@@ -6,6 +6,7 @@ from unittest import mock
 
 import pytest
 import responses
+from docker_python_nodejs.docker_hub import fetch_tags
 from docker_python_nodejs.dockerfiles import render_dockerfile_with_context
 from docker_python_nodejs.readme import update_dynamic_readme
 from docker_python_nodejs.settings import BASE_PATH, DOCKERFILES_PATH
@@ -112,23 +113,53 @@ def test_update_dynamic_readme(build_version: BuildVersion) -> None:
     assert f"{node_version.version} | {node_version.start} | {node_version.end}" in readme
 
 
-@pytest.fixture(name="python_tags")
-def python_tags_fixture() -> dict[str, Any]:
-    return {
+@pytest.fixture(name="python_tag_pages")
+def python_tag_pages_fixture() -> tuple[dict[str, Any], dict[str, Any]]:
+    page1 = {
         "count": 2,
-        "next": None,
+        "next": "https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=2&page_size=100",
         "previous": None,
         "results": [
             {
                 "name": "3.11.4-bookworm",
-                "images": [{"os": "linux", "architecture": "amd64"}, {"os": "linux", "architecture": "arm64"}],
-            },
+                "images": [
+                    {"os": "linux", "architecture": "amd64"},
+                    {"os": "linux", "architecture": "arm64"},
+                ],
+            }
+        ],
+    }
+    page2 = {
+        "count": 2,
+        "next": None,
+        "previous": page1["next"],
+        "results": [
             {
                 "name": "3.11.4-alpine",
                 "images": [{"os": "linux", "architecture": "amd64"}],
-            },
+            }
         ],
     }
+    return page1, page2
+
+
+@responses.activate
+def test_fetch_tags_multi_page(python_tag_pages: tuple[dict[str, Any], dict[str, Any]]) -> None:
+    page1, page2 = python_tag_pages
+    responses.add(
+        method="GET",
+        url="https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=1&page_size=100",
+        json=page1,
+    )
+    responses.add(
+        method="GET",
+        url="https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=2&page_size=100",
+        json=page2,
+    )
+    tags = fetch_tags("python")
+    assert len(tags) == 2
+    assert tags[0]["name"] == "3.11.4-bookworm"
+    assert tags[1]["name"] == "3.11.4-alpine"
 
 
 @pytest.fixture(name="node_releases")
@@ -175,14 +206,20 @@ def node_unofficial_releases_fixture() -> list[dict[str, Any]]:
 
 @responses.activate
 def test_decide_version_combinations(
-    python_tags: dict[str, Any],
+    python_tag_pages: tuple[dict[str, Any], dict[str, Any]],
     node_releases: list[dict[str, Any]],
     node_unofficial_releases: list[dict[str, Any]],
 ) -> None:
+    page1, page2 = python_tag_pages
     responses.add(
         method="GET",
         url="https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=1&page_size=100",
-        json=python_tags,
+        json=page1,
+    )
+    responses.add(
+        method="GET",
+        url="https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=2&page_size=100",
+        json=page2,
     )
     responses.add(method="GET", url="https://nodejs.org/dist/index.json", json=node_releases)
     responses.add(
@@ -196,7 +233,7 @@ def test_decide_version_combinations(
     versions = decide_version_combinations(["bookworm", "alpine"], [python_version], [node_version])
 
     assert versions
-    assert len(versions) == python_tags["count"]
+    assert len(versions) == page1["count"]
     assert versions[0].nodejs_canonical == "20.3.0"
     assert versions[0].python_canonical == "3.11.4"
     assert versions[0].distro == "bookworm"
