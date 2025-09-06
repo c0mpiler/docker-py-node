@@ -6,6 +6,7 @@ from unittest import mock
 
 import pytest
 import responses
+
 from docker_python_nodejs.dockerfiles import render_dockerfile_with_context
 from docker_python_nodejs.readme import update_dynamic_readme
 from docker_python_nodejs.settings import BASE_PATH, DOCKERFILES_PATH
@@ -36,8 +37,19 @@ def build_version_fixture() -> BuildVersion:
     )
 
 
-@pytest.mark.enable_socket()
+@responses.activate
 def test_scrape_supported_python_versions() -> None:
+    responses.add(
+        method="GET",
+        url="https://devguide.python.org/versions/",
+        body="""
+        <table id='supported-versions'><tbody>
+        <tr>
+        <td>3.11</td><td></td><td></td><td>2022-10-24</td><td>2027-10-24</td><td></td>
+        </tr>
+        </tbody></table>
+        """,
+    )
     versions = scrape_supported_python_versions()
     assert len(versions) > 0
     first_version = versions[0]
@@ -47,7 +59,12 @@ def test_scrape_supported_python_versions() -> None:
 
 
 @responses.activate
-def test_render_dockerfile_with_context(build_version: BuildVersion) -> None:
+def test_render_dockerfile_with_context(
+    build_version: BuildVersion, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr("docker_python_nodejs.settings.DOCKERFILES_PATH", tmp_path)
+    monkeypatch.setattr("docker_python_nodejs.dockerfiles.DOCKERFILES_PATH", tmp_path)
+    monkeypatch.setattr("tests.test_all.DOCKERFILES_PATH", tmp_path)
     file_path = DOCKERFILES_PATH / f"{build_version.key}.Dockerfile"
     res_keys = responses.Response(
         method="GET",
