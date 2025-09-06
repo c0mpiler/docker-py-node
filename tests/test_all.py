@@ -17,6 +17,7 @@ from docker_python_nodejs.versions import (
     fetch_supported_nodejs_versions,
     scrape_supported_python_versions,
 )
+import docker_python_nodejs.versions as versions
 
 
 @pytest.fixture(name="build_version")
@@ -251,3 +252,18 @@ def test_decide_nodejs_versions(
     versions = decide_nodejs_versions(distros, supported_node_versions)
 
     assert len(supported_node_versions) * len(distros) == len(versions)
+
+
+def test_load_versions_no_file(monkeypatch, tmp_path) -> None:
+    path = tmp_path / "versions.json"
+    monkeypatch.setattr(versions, "VERSIONS_PATH", path)
+
+    assert versions.load_versions() == []
+
+
+def test_find_new_or_updated_no_file(monkeypatch, tmp_path, build_version: BuildVersion) -> None:
+    path = tmp_path / "versions.json"
+    monkeypatch.setattr(versions, "VERSIONS_PATH", path)
+
+    result = versions.find_new_or_updated([build_version])
+    assert result == [build_version]

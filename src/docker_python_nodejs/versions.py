@@ -261,9 +261,12 @@ def persist_versions(versions: list[BuildVersion], dry_run: bool = False) -> Non
 
 
 def load_versions() -> list[BuildVersion]:
-    with VERSIONS_PATH.open() as fp:
-        version_dicts = json.load(fp)["versions"]
-        return [BuildVersion(**version) for version in version_dicts]
+    try:
+        with VERSIONS_PATH.open() as fp:
+            version_dicts = json.load(fp)["versions"]
+            return [BuildVersion(**version) for version in version_dicts]
+    except FileNotFoundError:
+        return []
 
 
 def find_new_or_updated(
@@ -272,8 +275,12 @@ def find_new_or_updated(
 ) -> list[BuildVersion]:
     if force:
         logger.warning("Generating full build matrix because --force is set")
+        return versions
 
     current_versions = load_versions()
+    if not current_versions:
+        return versions
+
     current_versions_dict = {ver.key: ver for ver in current_versions}
     versions_dict = {ver.key: ver for ver in versions}
     new_or_updated: list[BuildVersion] = []
@@ -282,7 +289,7 @@ def find_new_or_updated(
         # does key exist and are version dicts equal?
         updated = key in current_versions_dict and ver != current_versions_dict[key]
         new = key not in current_versions_dict
-        if new or updated or force:
+        if new or updated:
             new_or_updated.append(ver)
 
     return new_or_updated
