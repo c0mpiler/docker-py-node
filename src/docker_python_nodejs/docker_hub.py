@@ -43,15 +43,26 @@ class DockerTagResponse(TypedDict):
     results: list[DockerTagDict]
 
 
-def fetch_tags(package: str, page: int = 1) -> list[DockerTagDict]:
-    """Fetch available docker tags."""
+def fetch_tags(package: str, page: int = 1, name: str | None = None) -> list[DockerTagDict]:
+    """Fetch available docker tags.
+
+    The Docker Hub API supports a ``name`` query parameter that performs a
+    substring match on tag names.  By passing a value for ``name`` we can limit
+    the result set to tags that contain that value, which avoids enumerating the
+    entire tag collection for a repository.
+    """
+
+    params = {"page": page, "page_size": 100}
+    if name:
+        params["name"] = name
+
     result = requests.get(
         f"https://registry.hub.docker.com/v2/namespaces/library/repositories/{package}/tags",
-        params={"page": page, "page_size": 100},
+        params=params,
         timeout=10.0,
     )
     result.raise_for_status()
     data: DockerTagResponse = result.json()
     if not data["next"]:
         return data["results"]
-    return data["results"] + fetch_tags(package, page=page + 1)
+    return data["results"] + fetch_tags(package, page=page + 1, name=name)

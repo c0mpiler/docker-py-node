@@ -2,7 +2,6 @@ import dataclasses
 import datetime
 import json
 import logging
-import re
 from dataclasses import dataclass
 
 import requests
@@ -123,16 +122,11 @@ def scrape_supported_python_versions() -> list[SupportedVersion]:
 
 
 def decide_python_versions(distros: list[str], supported_versions: list[SupportedVersion]) -> list[PythonVersion]:
-    python_patch_re = "|".join([rf"^(\d+\.\d+\.\d+-{distro})$" for distro in distros])
-    python_wanted_tag_pattern = re.compile(python_patch_re)
-
-    # FIXME: can we avoid enumerating all tags to speed up things?
-    logger.debug("Fetching tags for python")
-    tags = [tag for tag in fetch_tags("python") if python_wanted_tag_pattern.match(tag["name"])]
-
     versions: list[PythonVersion] = []
     for supported_version in supported_versions:
         ver = supported_version.version
+        logger.debug(f"Fetching tags for python {ver}")
+        tags = fetch_tags("python", name=ver)
         for distro in distros:
             canonical_image = _latest_patch(tags, ver, distro)
             platforms = _wanted_image_platforms(distro)

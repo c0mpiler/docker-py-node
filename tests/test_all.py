@@ -36,14 +36,24 @@ def build_version_fixture() -> BuildVersion:
     )
 
 
-@pytest.mark.enable_socket()
+@responses.activate
 def test_scrape_supported_python_versions() -> None:
+    html = (
+        "<table id='supported-versions'><tbody><tr><td>3.11</td><td></td><td></td>"
+        "<td>2000-01-01</td><td>2099-01-01</td><td></td></tr></tbody></table>"
+    )
+    responses.add(
+        method="GET",
+        url="https://devguide.python.org/versions/",
+        body=html,
+    )
+
     versions = scrape_supported_python_versions()
-    assert len(versions) > 0
+    assert len(versions) == 1
     first_version = versions[0]
-    assert first_version.version
-    assert first_version.start
-    assert first_version.end
+    assert first_version.version == "3.11"
+    assert first_version.start == "2000-01-01"
+    assert first_version.end == "2099-01-01"
 
 
 @responses.activate
@@ -181,7 +191,7 @@ def test_decide_version_combinations(
 ) -> None:
     responses.add(
         method="GET",
-        url="https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=1&page_size=100",
+        url="https://registry.hub.docker.com/v2/namespaces/library/repositories/python/tags?page=1&page_size=100&name=3.11",
         json=python_tags,
     )
     responses.add(method="GET", url="https://nodejs.org/dist/index.json", json=node_releases)
@@ -203,6 +213,8 @@ def test_decide_version_combinations(
     assert versions[1].nodejs_canonical == "20.3.0"
     assert versions[1].python_canonical == "3.11.4"
     assert versions[1].distro == "alpine"
+    # Ensure we only queried Docker Hub for the relevant version
+    assert "name=3.11" in responses.calls[0].request.url
 
 
 @pytest.fixture(name="node_release_schedule")
