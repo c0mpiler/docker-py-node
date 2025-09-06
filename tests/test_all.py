@@ -36,14 +36,37 @@ def build_version_fixture() -> BuildVersion:
     )
 
 
-@pytest.mark.enable_socket()
-def test_scrape_supported_python_versions() -> None:
+@pytest.fixture(name="supported_versions_html")
+def supported_versions_html_fixture() -> str:
+    return """
+    <table id=\"supported-versions\">
+      <tbody>
+        <tr>
+          <td>3.12</td><td></td><td></td><td>2023-10-02</td><td>2028-10</td><td></td>
+        </tr>
+        <tr>
+          <td>3.11</td><td></td><td></td><td>2022-10-24</td><td>2027-10</td><td></td>
+        </tr>
+      </tbody>
+    </table>
+    """
+
+
+@responses.activate
+def test_scrape_supported_python_versions(supported_versions_html: str) -> None:
+    responses.add(
+        method="GET",
+        url="https://devguide.python.org/versions/",
+        body=supported_versions_html,
+        status=200,
+        content_type="text/html",
+    )
+
     versions = scrape_supported_python_versions()
-    assert len(versions) > 0
-    first_version = versions[0]
-    assert first_version.version
-    assert first_version.start
-    assert first_version.end
+    assert versions == [
+        SupportedVersion(start="2023-10-02", end="2028-10", version="3.12"),
+        SupportedVersion(start="2022-10-24", end="2027-10", version="3.11"),
+    ]
 
 
 @responses.activate
