@@ -36,14 +36,25 @@ def build_version_fixture() -> BuildVersion:
     )
 
 
-@pytest.mark.enable_socket()
+@responses.activate
 def test_scrape_supported_python_versions() -> None:
+    html = """
+    <table id="supported-versions">
+      <tbody>
+        <tr><td>3.12</td><td></td><td></td><td>2000-01-01</td><td>2999-01-01</td><td></td></tr>
+      </tbody>
+    </table>
+    """
+    responses.add(
+        method="GET",
+        url="https://devguide.python.org/versions/",
+        body=html,
+        status=200,
+    )
     versions = scrape_supported_python_versions()
-    assert len(versions) > 0
-    first_version = versions[0]
-    assert first_version.version
-    assert first_version.start
-    assert first_version.end
+    assert versions == [
+        SupportedVersion(version="3.12", start="2000-01-01", end="2999-01-01")
+    ]
 
 
 @responses.activate

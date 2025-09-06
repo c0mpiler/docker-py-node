@@ -25,7 +25,7 @@ def _github_action_set_output(key: str, value: str) -> None:
         sys.exit(1)
 
     with Path(GITHUB_OUTPUT).open("a") as fp:
-        fp.write(f"{key}={value}")
+        fp.write(f"{key}={value}\n")
 
 
 def build_matrix(new_or_updated: "list[BuildVersion]", ci_event: str) -> None:
