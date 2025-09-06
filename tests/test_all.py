@@ -1,4 +1,5 @@
 import dataclasses
+import datetime
 import json
 from pathlib import Path
 from typing import Any
@@ -246,7 +247,11 @@ def test_decide_nodejs_versions(
         url="https://unofficial-builds.nodejs.org/download/release/index.json",
         json=node_unofficial_releases,
     )
-    supported_node_versions = fetch_supported_nodejs_versions()
+    with mock.patch(
+        "docker_python_nodejs.versions.datetime.datetime", wraps=datetime.datetime
+    ) as mock_datetime:
+        mock_datetime.now.return_value = datetime.datetime(2024, 5, 1, tzinfo=datetime.UTC)
+        supported_node_versions = fetch_supported_nodejs_versions()
     distros = ["bookworm", "alpine"]
     versions = decide_nodejs_versions(distros, supported_node_versions)
 

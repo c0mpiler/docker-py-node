@@ -19,8 +19,6 @@ from .nodejs_versions import (
 )
 from .settings import DEFAULT_DISTRO, DEFAULT_PLATFORMS, DISTROS, VERSIONS_PATH
 
-todays_date = datetime.datetime.now(datetime.UTC).date().isoformat()
-
 
 logger = logging.getLogger("dpn")
 
@@ -106,6 +104,7 @@ def _latest_patch(tags: list[DockerTagDict], ver: str, distro: str) -> str | Non
 
 def scrape_supported_python_versions() -> list[SupportedVersion]:
     """Scrape supported python versions (risky)."""
+    todays_date = datetime.datetime.now(datetime.UTC).date().isoformat()
     versions = []
     version_table_row_selector = "#supported-versions tbody tr"
 
@@ -156,10 +155,13 @@ def decide_python_versions(distros: list[str], supported_versions: list[Supporte
 
 def fetch_supported_nodejs_versions() -> list[SupportedVersion]:
     release_schedule = fetch_nodejs_release_schedule()
+    todays_date = datetime.datetime.now(datetime.UTC).date().isoformat()
     versions = []
     for ver, detail in release_schedule.items():
         if detail["start"] <= todays_date <= detail["end"]:
-            versions.append(SupportedVersion(version=ver, start=detail["start"], end=detail["end"]))
+            versions.append(
+                SupportedVersion(version=ver, start=detail["start"], end=detail["end"])
+            )
 
     return versions
 

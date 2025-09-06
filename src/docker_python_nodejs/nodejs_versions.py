@@ -1,10 +1,7 @@
-import datetime
 from collections.abc import Mapping
 from typing import TypedDict
 
 import requests
-
-todays_date = datetime.datetime.now(datetime.UTC).date().isoformat()
 
 
 class NodeRelease(TypedDict):
