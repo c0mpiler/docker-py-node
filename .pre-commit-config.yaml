@@ -1,10 +1,17 @@
 repos:
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.0
+  - repo: local
     hooks:
       - id: ruff
+        name: ruff
+        entry: vendor/ruff-pre-commit/ruff.sh
+        language: script
+        types: [python]
         args: [--fix]
       - id: ruff-format
+        name: ruff-format
+        entry: vendor/ruff-pre-commit/ruff-format.sh
+        language: script
+        types: [python]
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.29.4
     hooks:

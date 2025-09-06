@@ -217,6 +217,15 @@ ninja update-versions
 ninja show-versions
 ```
 
+### Offline pre-commit
+
+This repository vendors the Ruff pre-commit hooks in `vendor/ruff-pre-commit` and references them locally in `.pre-commit-config.yaml`. As a result, the lint and format checks can run without network access:
+
+```bash
+uv run pre-commit install
+uv run pre-commit run --all-files
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
