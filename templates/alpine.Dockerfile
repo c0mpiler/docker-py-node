@@ -27,7 +27,7 @@ LABEL org.opencontainers.image.authors="c0mpiler <c0mpiler@ins8s.dev>"
 RUN addgroup -g 1000 c0mpiler && adduser -u 1000 -G c0mpiler -s /bin/sh -D c0mpiler
 RUN apk add libstdc++
 COPY --from=builder /node-v{{ nodejs_canonical }}-linux-x64-musl /usr/local
-RUN corepack enable yarn
+RUN npm install -g corepack && corepack enable yarn
 RUN pip install -U pip pipenv uv
 
 # Poetry
