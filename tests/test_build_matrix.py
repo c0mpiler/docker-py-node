@@ -1,7 +1,13 @@
+from pathlib import Path
+
+import pytest
 from docker_python_nodejs import build_matrix
 
 
-def test_github_action_set_output_splits_newlines(tmp_path, monkeypatch):
+def test_github_action_set_output_splits_newlines(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     output_file = tmp_path / "out.txt"
     monkeypatch.setattr(build_matrix, "GITHUB_OUTPUT", str(output_file))
 
