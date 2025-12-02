@@ -32,4 +32,6 @@ RUN NODE_VERSION="v{{ nodejs_canonical }}" \
 RUN npm install -g corepack && corepack enable yarn
 
 RUN pip install -U pip pipenv uv && \
-  curl -fsSL --compressed https://install.python-poetry.org | python -
+  curl -fsSL --compressed https://install.python-poetry.org | python - && \
+  apt-get update && apt-get install -yqq libatomic1 && \
+  rm -rf /var/lib/apt/lists/*

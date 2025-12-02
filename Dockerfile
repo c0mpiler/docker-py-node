@@ -27,6 +27,7 @@ RUN npm install -g corepack && corepack enable yarn
 RUN \
   apt-get update && \
   apt-get upgrade -yqq && \
+  apt-get install -yqq libatomic1 && \
   pip install -U pip pipenv uv && \
   curl -sSL https://install.python-poetry.org | python - && \
   rm -rf /var/lib/apt/lists/*
