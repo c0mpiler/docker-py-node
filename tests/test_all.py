@@ -53,7 +53,7 @@ def test_scrape_supported_python_versions() -> None:
     )
     versions = scrape_supported_python_versions()
     assert versions == [
-        SupportedVersion(version="3.12", start="2000-01-01", end="2999-01-01")
+        SupportedVersion(version="3.12", start="2000-01-01", end="2999-01-01"),
     ]
 
 
