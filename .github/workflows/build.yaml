@@ -81,9 +81,30 @@ jobs:
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
 
+      - name: Debug Info
+        run: |
+          docker images
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} ls -la /usr/local/bin
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} env
+
       - name: Run smoke tests
         run: |
-          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} sh -c "node --version && npm --version && yarn --version && python --version && pip --version && pipenv --version && poetry --version && uv --version"
+          echo "Testing node..."
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} node --version
+          echo "Testing npm..."
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} npm --version
+          echo "Testing yarn..."
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} yarn --version
+          echo "Testing python..."
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} python --version
+          echo "Testing pip..."
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} pip --version
+          echo "Testing pipenv..."
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} pipenv --version
+          echo "Testing poetry..."
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} poetry --version
+          echo "Testing uv..."
+          docker run --rm c0mpiler/python-nodejs:${{ matrix.key }} uv --version
 
       - name: Push image
         uses: docker/build-push-action@v6
