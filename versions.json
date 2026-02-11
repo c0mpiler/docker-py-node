@@ -6,7 +6,7 @@
       "python_canonical": "3.14.3",
       "python_image": "3.14.3-bookworm",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -19,7 +19,7 @@
       "python_canonical": "3.14.3",
       "python_image": "3.14.3-slim",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -44,7 +44,7 @@
       "python_canonical": "3.14.3",
       "python_image": "3.14.3-bookworm",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -57,7 +57,7 @@
       "python_canonical": "3.14.3",
       "python_image": "3.14.3-slim",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -158,7 +158,7 @@
       "python_canonical": "3.13.12",
       "python_image": "3.13.12-bookworm",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -171,7 +171,7 @@
       "python_canonical": "3.13.12",
       "python_image": "3.13.12-slim",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -196,7 +196,7 @@
       "python_canonical": "3.13.12",
       "python_image": "3.13.12-bookworm",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -209,7 +209,7 @@
       "python_canonical": "3.13.12",
       "python_image": "3.13.12-slim",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -310,7 +310,7 @@
       "python_canonical": "3.13.6",
       "python_image": "3.13.6-bullseye",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "bullseye",
       "platforms": [
         "linux/amd64",
@@ -323,7 +323,7 @@
       "python_canonical": "3.13.6",
       "python_image": "3.13.6-bullseye",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "bullseye",
       "platforms": [
         "linux/amd64",
@@ -362,7 +362,7 @@
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-bookworm",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -375,7 +375,7 @@
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-slim",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -400,7 +400,7 @@
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-bookworm",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -413,7 +413,7 @@
       "python_canonical": "3.12.12",
       "python_image": "3.12.12-slim",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -514,7 +514,7 @@
       "python_canonical": "3.12.11",
       "python_image": "3.12.11-bullseye",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "bullseye",
       "platforms": [
         "linux/amd64",
@@ -527,7 +527,7 @@
       "python_canonical": "3.12.11",
       "python_image": "3.12.11-bullseye",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "bullseye",
       "platforms": [
         "linux/amd64",
@@ -566,7 +566,7 @@
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-bookworm",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -579,7 +579,7 @@
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-slim",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -604,7 +604,7 @@
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-bookworm",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -617,7 +617,7 @@
       "python_canonical": "3.11.14",
       "python_image": "3.11.14-slim",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -718,7 +718,7 @@
       "python_canonical": "3.11.13",
       "python_image": "3.11.13-bullseye",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "bullseye",
       "platforms": [
         "linux/amd64",
@@ -731,7 +731,7 @@
       "python_canonical": "3.11.13",
       "python_image": "3.11.13-bullseye",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "bullseye",
       "platforms": [
         "linux/amd64",
@@ -770,7 +770,7 @@
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-bookworm",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -783,7 +783,7 @@
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-slim",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -808,7 +808,7 @@
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-bookworm",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "bookworm",
       "platforms": [
         "linux/amd64",
@@ -821,7 +821,7 @@
       "python_canonical": "3.10.19",
       "python_image": "3.10.19-slim",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "slim",
       "platforms": [
         "linux/amd64",
@@ -922,7 +922,7 @@
       "python_canonical": "3.10.18",
       "python_image": "3.10.18-bullseye",
       "nodejs": "25",
-      "nodejs_canonical": "25.6.0",
+      "nodejs_canonical": "25.6.1",
       "distro": "bullseye",
       "platforms": [
         "linux/amd64",
@@ -935,7 +935,7 @@
       "python_canonical": "3.10.18",
       "python_image": "3.10.18-bullseye",
       "nodejs": "24",
-      "nodejs_canonical": "24.13.0",
+      "nodejs_canonical": "24.13.1",
       "distro": "bullseye",
       "platforms": [
         "linux/amd64",
