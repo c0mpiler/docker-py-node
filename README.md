@@ -47,7 +47,7 @@ Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
 `python3.14-nodejs25` | 3.14.3 | 25.6.1 | bookworm
 `python3.14-nodejs25-slim` | 3.14.3 | 25.6.1 | slim
-`python3.14-nodejs25-alpine` | 3.14.3 | 25.6.0 | alpine
+`python3.14-nodejs25-alpine` | 3.14.3 | 25.6.1 | alpine
 `python3.14-nodejs24` | 3.14.3 | 24.13.1 | bookworm
 `python3.14-nodejs24-slim` | 3.14.3 | 24.13.1 | slim
 `python3.14-nodejs24-alpine` | 3.14.3 | 24.13.0 | alpine
@@ -59,7 +59,7 @@ Tag | Python version | Node.js version | Distro
 `python3.14-nodejs20-alpine` | 3.14.3 | 20.20.0 | alpine
 `python3.13-nodejs25` | 3.13.12 | 25.6.1 | bookworm
 `python3.13-nodejs25-slim` | 3.13.12 | 25.6.1 | slim
-`python3.13-nodejs25-alpine` | 3.13.12 | 25.6.0 | alpine
+`python3.13-nodejs25-alpine` | 3.13.12 | 25.6.1 | alpine
 `python3.13-nodejs24` | 3.13.12 | 24.13.1 | bookworm
 `python3.13-nodejs24-slim` | 3.13.12 | 24.13.1 | slim
 `python3.13-nodejs24-alpine` | 3.13.12 | 24.13.0 | alpine
@@ -75,7 +75,7 @@ Tag | Python version | Node.js version | Distro
 `python3.13-nodejs20-bullseye` | 3.13.6 | 20.20.0 | bullseye
 `python3.12-nodejs25` | 3.12.12 | 25.6.1 | bookworm
 `python3.12-nodejs25-slim` | 3.12.12 | 25.6.1 | slim
-`python3.12-nodejs25-alpine` | 3.12.12 | 25.6.0 | alpine
+`python3.12-nodejs25-alpine` | 3.12.12 | 25.6.1 | alpine
 `python3.12-nodejs24` | 3.12.12 | 24.13.1 | bookworm
 `python3.12-nodejs24-slim` | 3.12.12 | 24.13.1 | slim
 `python3.12-nodejs24-alpine` | 3.12.12 | 24.13.0 | alpine
@@ -91,7 +91,7 @@ Tag | Python version | Node.js version | Distro
 `python3.12-nodejs20-bullseye` | 3.12.11 | 20.20.0 | bullseye
 `python3.11-nodejs25` | 3.11.14 | 25.6.1 | bookworm
 `python3.11-nodejs25-slim` | 3.11.14 | 25.6.1 | slim
-`python3.11-nodejs25-alpine` | 3.11.14 | 25.6.0 | alpine
+`python3.11-nodejs25-alpine` | 3.11.14 | 25.6.1 | alpine
 `python3.11-nodejs24` | 3.11.14 | 24.13.1 | bookworm
 `python3.11-nodejs24-slim` | 3.11.14 | 24.13.1 | slim
 `python3.11-nodejs24-alpine` | 3.11.14 | 24.13.0 | alpine
@@ -107,7 +107,7 @@ Tag | Python version | Node.js version | Distro
 `python3.11-nodejs20-bullseye` | 3.11.13 | 20.20.0 | bullseye
 `python3.10-nodejs25` | 3.10.19 | 25.6.1 | bookworm
 `python3.10-nodejs25-slim` | 3.10.19 | 25.6.1 | slim
-`python3.10-nodejs25-alpine` | 3.10.19 | 25.6.0 | alpine
+`python3.10-nodejs25-alpine` | 3.10.19 | 25.6.1 | alpine
 `python3.10-nodejs24` | 3.10.19 | 24.13.1 | bookworm
 `python3.10-nodejs24-slim` | 3.10.19 | 24.13.1 | slim
 `python3.10-nodejs24-alpine` | 3.10.19 | 24.13.0 | alpine
