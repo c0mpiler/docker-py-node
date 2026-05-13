@@ -45,18 +45,18 @@ Select the specific combination of Python and Node.js versions that suits your n
 
 Tag | Python version | Node.js version | Distro
 --- | --- | --- | ---
-`python3.14-nodejs26` | 3.14.4 | 26.1.0 | bookworm
-`python3.14-nodejs26-slim` | 3.14.4 | 26.1.0 | slim
-`python3.14-nodejs26-alpine` | 3.14.4 | 26.1.0 | alpine
-`python3.14-nodejs25` | 3.14.4 | 25.9.0 | bookworm
-`python3.14-nodejs25-slim` | 3.14.4 | 25.9.0 | slim
-`python3.14-nodejs25-alpine` | 3.14.4 | 25.9.0 | alpine
-`python3.14-nodejs24` | 3.14.4 | 24.15.0 | bookworm
-`python3.14-nodejs24-slim` | 3.14.4 | 24.15.0 | slim
-`python3.14-nodejs24-alpine` | 3.14.4 | 24.15.0 | alpine
-`python3.14-nodejs22` | 3.14.4 | 22.22.2 | bookworm
-`python3.14-nodejs22-slim` | 3.14.4 | 22.22.2 | slim
-`python3.14-nodejs22-alpine` | 3.14.4 | 22.22.2 | alpine
+`python3.14-nodejs26` | 3.14.5 | 26.1.0 | bookworm
+`python3.14-nodejs26-slim` | 3.14.5 | 26.1.0 | slim
+`python3.14-nodejs26-alpine` | 3.14.5 | 26.1.0 | alpine
+`python3.14-nodejs25` | 3.14.5 | 25.9.0 | bookworm
+`python3.14-nodejs25-slim` | 3.14.5 | 25.9.0 | slim
+`python3.14-nodejs25-alpine` | 3.14.5 | 25.9.0 | alpine
+`python3.14-nodejs24` | 3.14.5 | 24.15.0 | bookworm
+`python3.14-nodejs24-slim` | 3.14.5 | 24.15.0 | slim
+`python3.14-nodejs24-alpine` | 3.14.5 | 24.15.0 | alpine
+`python3.14-nodejs22` | 3.14.5 | 22.22.2 | bookworm
+`python3.14-nodejs22-slim` | 3.14.5 | 22.22.2 | slim
+`python3.14-nodejs22-alpine` | 3.14.5 | 22.22.2 | alpine
 `python3.13-nodejs26` | 3.13.13 | 26.1.0 | bookworm
 `python3.13-nodejs26-slim` | 3.13.13 | 26.1.0 | slim
 `python3.13-nodejs26-alpine` | 3.13.13 | 26.1.0 | alpine
@@ -140,7 +140,7 @@ Python version | Start | End
 
 Node.js version | Start | End
 --- | --- | ---
-v26 | 2026-04-22 | 2029-04-30
+v26 | 2026-05-05 | 2029-04-30
 v25 | 2025-10-15 | 2026-06-01
 v24 | 2025-05-06 | 2028-04-30
 v22 | 2024-04-24 | 2027-04-30
